@@ -179,6 +179,7 @@ detect ACCOUNT from it."
       (message-add-header (format "From: %s\n" (message-make-from)))
       (message "Using account %s" account))))
 
+;;;###autoload
 (defun mu4e-multi-compose-new ()
   "Start writing a new message.
 This is a simple wrapper over `mu4e-compose-new' that asks for an
