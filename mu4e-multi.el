@@ -97,8 +97,7 @@ If no account can be found from MSG then use ACCOUNT as default."
                 (string-match
                  (concat
                   "/\\("
-                  (regexp-opt
-                   (mapcar 'regexp-quote account-list))
+                  (regexp-opt account-list)
                   "\\)/?")
                  maildir))
            (match-string-no-properties 1 maildir))
