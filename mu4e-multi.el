@@ -32,7 +32,7 @@
 (require 'mu4e-actions)
 (require 'mu4e-headers)
 (require 'thingatpt)
-
+(require 'subr-x)
 
 (defvar mu4e-multi-last-read-account ""
   "Holds the last selected account from minibuffer.
@@ -207,7 +207,11 @@ keys of the `mu4e-multi-account-alist'."
                   (email (replace-regexp-in-string "[<>]" "" email)))
              (if email
                  (cl-dolist (alist mu4e-multi-account-alist)
-                   (when (string= email (cdr (assoc 'user-mail-address (cdr alist))))
+                   (when (or (string= email
+                                      (alist-get 'user-mail-address
+                                                 (cdr alist)))
+                             (member email (alist-get 'user-mail-identities
+                                                      (cdr alist))))
                      (throw 'exit (car alist))))
                (catch 'exit (mu4e-multi-minibuffer-read-account))))))))
 

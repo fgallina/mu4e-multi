@@ -87,6 +87,8 @@ set a `message-mode-hook` to detect and set the current account
 variables based on the email address. If for some reason you wish to
 rollback these changes, just call `mu4e-multi-disable`.
 
+In addition to the primary email address of an account identified by the `user-mail-address` key, there may also be a `user-mail-identities` key which contains a list of email addresses that are treated as aliases to the primary address.
+
 ### Custom folders and markers
 
 Notice that, in our example, the `mu4e-hold-folder`and
